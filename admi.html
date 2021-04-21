@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Administración</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="CCS/estilos.css">
+    <script src='Scripts/funciones.js'></script>
+</head>
+<body onload="CargarAdmi()">    
+	<!--Navegacion-->	
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand" id="CorreoUsuario" href="#"></a>
+            <button  button class='btn btn-primary' onclick="location.href='catalogo.html'" >Catalogo</button>
+            <button  button class='btn btn-primary' onclick="location.href='index.html'">Inicio</button>
+		</div>
+	</nav>
+    <!--MAIN CONTENT-->	
+    <!--Lista de productos-->
+    <table>
+        <th><h2>Productos</h2></th>
+        <th><button type='button'  class='btn btn-primary' data-toggle='modal' data-target='#CrearProductoModal' onclick="ArmarAgregarProducto()">Agregar Producto</button></th>
+    </table> 
+    <div id="Productos"></div>
+    <!--Lista de Usuarios--> 
+    <table>
+        <th><h2>Usuarios</h2></th>
+        <th><button type='button'  class='btn btn-primary' data-toggle='modal' data-target='#CrearUsuarioModal'>Agregar Usuario</button></th>
+    </table>      
+    <div id="Usuarios"></div>
+    <!--Info de pedidos-->
+    <h2>Pedidos</h2>
+    <div id="Pedidos"></div>
+      
+    
+
+	<!--Boostrap scripts-->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>	
+        <!--Modal Crear usuario-->
+	<div class="modal fade" id="CrearUsuarioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Crear Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="signup-form">
+                    <div class="form-grup">    
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Correo</span>
+                            <input type="text" class="form-control" id="Correo" aria-describedby="addon-wrapping">
+                        </div>
+                        
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Contraseña</span>
+                            <input type="password" class="form-control" id="Contraseña" aria-describedby="addon-wrapping">
+                        </div>
+                    </div>                   
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="AgregarUsuario()">Agreagar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <div id="BotonaAgregar">  </div>
+                    </div>
+                </form>
+            </div>
+
+          </div>
+    </div>
+</div>
+<!--Modal Crear producto-->
+    <div class="modal fade" id="CrearProductoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <div id="Titulo">  </div>              
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="signup-form">
+                    <div class="form-grup">    
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Nombre</span>
+                            <input type="text" class="form-control" id="NombreProducto" aria-describedby="addon-wrapping">
+                        </div>                        
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Precio</span>
+                            <input type="number" min="1" class="form-control" id="PrecioProducto" aria-describedby="addon-wrapping">
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Descripcion</span>
+                            <input type="text" min="1" class="form-control" id="DescripcionProducto" aria-describedby="addon-wrapping">
+                        </div>
+                    </div>                   
+                    <div class="modal-footer">
+                       <div id="btnAgregar_Crear"></div> 
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <div id="BotonaAgregar">  </div>
+                    </div>
+                </form>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
